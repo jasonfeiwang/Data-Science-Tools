@@ -977,12 +977,3 @@ plt.show()
 
 
 
-
-
-# use plotly in Jupyter Notebook
-from plotly.offline import init_notebook_mode, iplot
-from plotly.graph_objs import *
-
-# initiate notebook for offline plot
-init_notebook_mode(connected=True)        
-
