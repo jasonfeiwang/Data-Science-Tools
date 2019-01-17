@@ -1,4 +1,4 @@
-# 1. Enumerate the (key, value) pair of a Series:
+#1. Enumerate the (key, value) pair of a Series:
 Series.iteritems()
 
 
