@@ -19,11 +19,22 @@ myorder = [3, 2, 0, 1, 4]
 mylist = [mylist[i] for i in myorder]
 
 
-# 4. unique count of A by B
-df = df.groupby('B')['A'].nunique() # series
-# or
-temp = df.groupby(['B']).agg({'A': 'nunique'}).reset_index() # dataframe
-temp.columns = ['B', 'count']
+# 4. groupby function
+# For a Pandas dataframe, we can groupby on 
+# 1) Index 
+df.groupby(function, axis = 0)
+# 2) ColumnName
+df.groupby(function, axis = 1)
+# 3) Particular Column(s)
+df.groupby(['colA', 'colB']).['colC'].count()
+df = df.groupby('B')['A'].nunique() 
+
+# We can also apply mulitple functions to multiple columns
+df.groupby(['B']).agg({'A': 'nunique'}).reset_index() # dataframe
+df.groupby(['A', 'B']).agg({'C': 'nunique', 'D': lambda x: x*4}).reset_index()
+
+# It's useful to check the GroupBy object attributes
+df.group(XXX).groups # dictionary object
 
 
 # 5. Use plotly in Jupyter Notebook
