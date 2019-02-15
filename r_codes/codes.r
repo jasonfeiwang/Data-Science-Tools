@@ -74,4 +74,8 @@ diamonds %>%
     geom_tile(mapping = aes(fill = n))
 
 
-# 13.
+# 13. Prevent the conversion from string to factors
+x.df <- data.frame(xNum, xLog, xChar, stringsAsFactors = FALSE)
+
+# 14. Remove all variables
+rm(list=ls())
