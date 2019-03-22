@@ -31,7 +31,7 @@ df = df.groupby('B')['A'].nunique()
 
 # We can also apply mulitple functions to multiple columns
 df.groupby(['B']).agg({'A': 'nunique'}).reset_index() # dataframe
-df.groupby(['A', 'B']).agg({'C': 'nunique', 'D': lambda x: x*4}).reset_index()
+df.groupby(['A', 'B']).agg({'C': ['nunique', 'sum'], 'D': lambda x: x*4}).reset_index()
 
 # It's useful to check the GroupBy object attributes
 df.group(XXX).groups # dictionary object
@@ -78,4 +78,8 @@ from plotly.graph_objs import *
 init_notebook_mode(connected=True)
 
 
-# 11. 
+# 11. Create a dataframe from a list
+df_dates = pd.DataFrame({'stay_date':datelist})
+
+
+# 12.
