@@ -6,7 +6,9 @@
 
 # 1. convert ts object into data.frame
 library(zoo)
-df_flu = data.frame(month = as.Date(as.yearmon(time(flu))), value = as.matrix(flu))
+ts_to_df <- function(ts) {
+    data.frame(month = as.Date(as.yearmon(time(ts))), value = as.matrix(ts))
+}
 
 
 # 2. convert data.frame to ts object
@@ -192,4 +194,14 @@ bwplot(Segment ~ income, data=seg.df, horizontal=TRUE, xlab = "Income")
 bwplot(Segment ~ income | ownHome, data=seg.df, horizontal=TRUE, 
        xlab="Income")
 
-# 27.
+# 27. apply function to dataframe
+mapply(df, df$Residual, df$Upper, df$Lower)
+
+
+#28. replace NA's in a tibble
+library(tidyr)
+df <- tibble::tibble(x = c(1, 2, NA), y = c("a", NA, "b"), z = list(1:5, NULL, 10:20))
+df %>% replace_na(list(x = 0, y = "unknown")) %>% str()
+
+
+# 29.
